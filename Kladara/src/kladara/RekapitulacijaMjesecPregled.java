@@ -46,9 +46,9 @@ public class RekapitulacijaMjesecPregled extends javax.swing.JDialog {
             postavkeTablica();
         } catch (SQLException ex) {
             Poruka.greska(this, ex.getMessage());
-        }        
+        }
         this.getRootPane().setDefaultButton(jButtonOK);
-        Pomocna.postavkeProzora(this,jFormattedTextFieldDatumOd);
+        Pomocna.postavkeProzora(this, jFormattedTextFieldDatumOd);
         setVisible(true);
         lokacijaPoljaTotala();
         setModal(modal);
@@ -215,11 +215,6 @@ public class RekapitulacijaMjesecPregled extends javax.swing.JDialog {
         jTextFieldTipsterNaziv.setFocusable(false);
 
         jComboBoxIgram.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jComboBoxIgram.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jComboBoxIgramKeyPressed(evt);
-            }
-        });
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Igram");
@@ -535,10 +530,7 @@ public class RekapitulacijaMjesecPregled extends javax.swing.JDialog {
     }//GEN-LAST:event_jFormattedTextFieldDatumOdFocusGained
 
     private void jFormattedTextFieldDatumOdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextFieldDatumOdKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            evt.consume();
-            jFormattedTextFieldDatumOd.transferFocus();
-        }
+
         Pomocna.navigacijaKrozMjesece((JFormattedTextField) evt.getSource(), evt, true);
     }//GEN-LAST:event_jFormattedTextFieldDatumOdKeyPressed
 
@@ -553,11 +545,6 @@ public class RekapitulacijaMjesecPregled extends javax.swing.JDialog {
     }//GEN-LAST:event_jFormattedTextFieldDatumDoFocusGained
 
     private void jFormattedTextFieldDatumDoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextFieldDatumDoKeyPressed
-        // TODO add your handling code here:
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            evt.consume();
-            jFormattedTextFieldDatumDo.transferFocus();
-        }
         Pomocna.navigacijaKrozMjesece((JFormattedTextField) evt.getSource(), evt, false);
     }//GEN-LAST:event_jFormattedTextFieldDatumDoKeyPressed
 
@@ -580,11 +567,6 @@ public class RekapitulacijaMjesecPregled extends javax.swing.JDialog {
     }//GEN-LAST:event_jFormattedTextFieldTipsterPropertyChange
 
     private void jFormattedTextFieldTipsterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextFieldTipsterKeyPressed
-        // TODO add your handling code here:
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            evt.consume();
-            jFormattedTextFieldTipster.transferFocus();
-        }
         if (evt.getKeyCode() == KeyEvent.VK_F5) {
             if (jFormattedTextFieldTipster.getValue() == null) {
                 jFormattedTextFieldTipster.setValue(0);
@@ -595,14 +577,6 @@ public class RekapitulacijaMjesecPregled extends javax.swing.JDialog {
         }
 
     }//GEN-LAST:event_jFormattedTextFieldTipsterKeyPressed
-
-    private void jComboBoxIgramKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBoxIgramKeyPressed
-        // TODO add your handling code here:
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            evt.consume();
-            jButtonOK.requestFocus();
-        }
-    }//GEN-LAST:event_jComboBoxIgramKeyPressed
 
     private void jButtonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOKActionPerformed
         if ((jFormattedTextFieldTipster.getValue() != null && !jFormattedTextFieldTipster.getText().trim().equals("0")) && jTextFieldTipsterNaziv.getText().equals("")) {
