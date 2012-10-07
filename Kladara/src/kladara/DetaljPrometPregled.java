@@ -47,7 +47,7 @@ public class DetaljPrometPregled extends javax.swing.JDialog {
             Poruka.greska(this, ex.getMessage());
         }
         this.getRootPane().setDefaultButton(jButtonIzlaz);
-
+        Pomocna.postavkeProzora(this,null);
         setVisible(true);
         lokacijaPoljaTotala();
         setModal(modal);
@@ -263,7 +263,6 @@ public class DetaljPrometPregled extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
 
     private void postavkeTablica() {
         tablica.getTable().setAutoResizeMode(JTable.AUTO_RESIZE_SUBSEQUENT_COLUMNS);
@@ -365,7 +364,7 @@ public class DetaljPrometPregled extends javax.swing.JDialog {
         // Order by
         orderBy = " ORDER BY A.Datum, A.Tipster_ID";
         sql = sql + orderBy;
-        tablica.setSelectSql(sql);        
+        tablica.setSelectSql(sql);
     }
 
     private void totalSQL() {
@@ -390,7 +389,7 @@ public class DetaljPrometPregled extends javax.swing.JDialog {
             jFormattedTextFieldSUlog.setValue(rs.getBigDecimal("ULOG"));
             jFormattedTextFieldSDobitak.setValue(rs.getBigDecimal("DOBITAK"));
             jFormattedTextFieldSSaldo.setValue(rs.getBigDecimal("SALDO"));
-            jFormattedTextFieldSROI.setValue(rs.getBigDecimal("ROI"));     
+            jFormattedTextFieldSROI.setValue(rs.getBigDecimal("ROI"));
             rs.close();
         } catch (SQLException ex) {
             Poruka.greska(rootPane, ex.getMessage());
@@ -409,7 +408,7 @@ public class DetaljPrometPregled extends javax.swing.JDialog {
             where = where + " AND A.TIPSTER_ID=" + jFormattedTextFieldTipster.getValue();
         }
         //Status       
-                where = where + " AND A.STATUS_ID IN(1,2)";        
+        where = where + " AND A.STATUS_ID IN(1,2)";
         //Igram
         if (jComboBoxIgram.getSelectedIndex() != 2) {
             where = where + " AND A.IGRAM=" + jComboBoxIgram.getSelectedIndex();

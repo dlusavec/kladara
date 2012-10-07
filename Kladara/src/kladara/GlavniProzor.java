@@ -12,10 +12,7 @@ import pomocni.Poruka;
  * @author damirl
  */
 public class GlavniProzor extends javax.swing.JFrame {
-
-    /**
-     * Creates new form GlavniProzor
-     */
+  
     public GlavniProzor() {
         initComponents();
         setLocationRelativeTo(null);

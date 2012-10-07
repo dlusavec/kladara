@@ -39,7 +39,7 @@ public class TipsterAzuriranje extends javax.swing.JDialog {
             select();
         }
         this.getRootPane().setDefaultButton(jButtonOK);
-        Pomocna.postavkeProzora(this);
+        Pomocna.postavkeProzora(this,jFormattedTextFieldNaziv);
         setVisible(true);
         setModal(modal);
 
