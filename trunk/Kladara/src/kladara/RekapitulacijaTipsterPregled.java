@@ -92,13 +92,11 @@ public class RekapitulacijaTipsterPregled extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Rekapitulacija - Tipster");
         setLocationByPlatform(true);
-        setMinimumSize(new java.awt.Dimension(1100, 533));
         setResizable(false);
 
         tablica.setConnection(Konekcija.konekcija);
         tablica.setMaximumSize(new java.awt.Dimension(1100, 310));
         tablica.setMinimumSize(new java.awt.Dimension(1100, 310));
-        tablica.setPreferredSize(new java.awt.Dimension(1100, 310));
         tablica.setSelectSql("SELECT B.ID AS Id, b.Naziv as Naziv,SUM(A.ULOG) as Uloženo, SUM(A.Saldo) AS Saldo, ROUND(SUM(A.SALDO)/SUM(A.ULOG)*100,2) AS ROI,\nROUND(AVG(ULOG),2) as Prosj_ulog,ROUND(SUM(SALDO)/AVG(ULOG),2) as Osvojio_uloga,\nCOUNT(*) as Tiketa, SUM(CASE A.STATUS_ID WHEN 1 THEN 1 ELSE 0 END) AS Dobitno,SUM(CASE A.STATUS_ID WHEN 2 THEN 1 ELSE 0 END) AS Gubitno\nFROM PROMET A\nINNER JOIN TIPSTER B ON B.ID=a.TIPSTER_ID\nWHERE A.DATUM>='2012-09-01' and STATUS_ID IN(1,2)\nGROUP BY B.ID,B.NAZIV \nORDER BY Naziv");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
@@ -216,11 +214,6 @@ public class RekapitulacijaTipsterPregled extends javax.swing.JDialog {
         jTextFieldTipsterNaziv.setFocusable(false);
 
         jComboBoxIgram.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jComboBoxIgram.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jComboBoxIgramKeyPressed(evt);
-            }
-        });
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Igram");
@@ -265,7 +258,7 @@ public class RekapitulacijaTipsterPregled extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jFormattedTextFieldTipster, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextFieldTipsterNaziv, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                .addComponent(jTextFieldTipsterNaziv)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -346,12 +339,7 @@ public class RekapitulacijaTipsterPregled extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tablica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addComponent(jLabel1)
@@ -369,15 +357,16 @@ public class RekapitulacijaTipsterPregled extends javax.swing.JDialog {
                 .addComponent(jFormattedTextFieldSDobitno, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jFormattedTextFieldSGubitno, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(104, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE)
+            .addComponent(tablica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addComponent(tablica, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addComponent(tablica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(3, 3, 3)
@@ -392,7 +381,7 @@ public class RekapitulacijaTipsterPregled extends javax.swing.JDialog {
                         .addComponent(jFormattedTextFieldSGubitno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jFormattedTextFieldSTiketa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jFormattedTextFieldSOsvojeno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(5, 5, 5)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -551,11 +540,7 @@ public class RekapitulacijaTipsterPregled extends javax.swing.JDialog {
     }//GEN-LAST:event_jFormattedTextFieldDatumOdFocusGained
 
     private void jFormattedTextFieldDatumOdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextFieldDatumOdKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            evt.consume();
-            jFormattedTextFieldDatumOd.transferFocus();
-        }
-        Pomocna.navigacijaKrozMjesece((JFormattedTextField) evt.getSource(), evt, true);
+            Pomocna.navigacijaKrozMjesece((JFormattedTextField) evt.getSource(), evt, true);
     }//GEN-LAST:event_jFormattedTextFieldDatumOdKeyPressed
 
     private void jFormattedTextFieldDatumDoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jFormattedTextFieldDatumDoFocusGained
@@ -569,12 +554,7 @@ public class RekapitulacijaTipsterPregled extends javax.swing.JDialog {
     }//GEN-LAST:event_jFormattedTextFieldDatumDoFocusGained
 
     private void jFormattedTextFieldDatumDoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextFieldDatumDoKeyPressed
-        // TODO add your handling code here:
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            evt.consume();
-            jFormattedTextFieldDatumDo.transferFocus();
-        }
-        Pomocna.navigacijaKrozMjesece((JFormattedTextField) evt.getSource(), evt, false);
+             Pomocna.navigacijaKrozMjesece((JFormattedTextField) evt.getSource(), evt, false);
     }//GEN-LAST:event_jFormattedTextFieldDatumDoKeyPressed
 
     private void jFormattedTextFieldTipsterFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jFormattedTextFieldTipsterFocusGained
@@ -596,12 +576,7 @@ public class RekapitulacijaTipsterPregled extends javax.swing.JDialog {
     }//GEN-LAST:event_jFormattedTextFieldTipsterPropertyChange
 
     private void jFormattedTextFieldTipsterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextFieldTipsterKeyPressed
-        // TODO add your handling code here:
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            evt.consume();
-            jFormattedTextFieldTipster.transferFocus();
-        }
-        if (evt.getKeyCode() == KeyEvent.VK_F5) {
+       if (evt.getKeyCode() == KeyEvent.VK_F5) {
             if (jFormattedTextFieldTipster.getValue() == null) {
                 jFormattedTextFieldTipster.setValue(0);
             }
@@ -611,14 +586,6 @@ public class RekapitulacijaTipsterPregled extends javax.swing.JDialog {
         }
 
     }//GEN-LAST:event_jFormattedTextFieldTipsterKeyPressed
-
-    private void jComboBoxIgramKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBoxIgramKeyPressed
-        // TODO add your handling code here:
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            evt.consume();
-            jButtonOK.requestFocus();
-        }
-    }//GEN-LAST:event_jComboBoxIgramKeyPressed
 
     private void jButtonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOKActionPerformed
         if ((jFormattedTextFieldTipster.getValue() != null && !jFormattedTextFieldTipster.getText().trim().equals("0")) && jTextFieldTipsterNaziv.getText().equals("")) {
