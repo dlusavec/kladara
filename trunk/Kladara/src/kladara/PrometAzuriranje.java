@@ -50,7 +50,7 @@ public class PrometAzuriranje extends javax.swing.JDialog {
             jFormattedTextFieldMT.setValue(5);
         }
         this.getRootPane().setDefaultButton(jButtonOK);
-        Pomocna.postavkeProzora(this);
+        Pomocna.postavkeProzora(this,jFormattedTextFieldDatum);
         setVisible(true);
         setModal(modal);
 

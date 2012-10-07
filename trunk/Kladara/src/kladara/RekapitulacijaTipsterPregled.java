@@ -46,9 +46,9 @@ public class RekapitulacijaTipsterPregled extends javax.swing.JDialog {
             postavkeTablica();
         } catch (SQLException ex) {
             Poruka.greska(this, ex.getMessage());
-        }
-        Pomocna.registrirajFokusNaPrvuKomponentu(jFormattedTextFieldDatumOd);
+        }        
         this.getRootPane().setDefaultButton(jButtonOK);
+         Pomocna.postavkeProzora(this,jFormattedTextFieldDatumOd);
         setVisible(true);
         lokacijaPoljaTotala();
         setModal(modal);

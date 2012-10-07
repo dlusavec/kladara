@@ -44,8 +44,8 @@ public class PrometPregled extends javax.swing.JDialog {
         } catch (SQLException ex) {
             Poruka.greska(this, ex.getMessage());
         }
-        this.getRootPane().setDefaultButton(jButtonOK);
-        Pomocna.registrirajFokusNaPrvuKomponentu(jFormattedTextFieldDatumOd);
+        this.getRootPane().setDefaultButton(jButtonOK);        
+        Pomocna.postavkeProzora(this,jFormattedTextFieldDatumOd);
         setVisible(true);
         lokacijaPoljaTotala();
         setModal(modal);

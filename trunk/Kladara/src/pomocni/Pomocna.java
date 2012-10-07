@@ -23,7 +23,9 @@ import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
+import javax.swing.JDialog;
 import javax.swing.JFormattedTextField;
+import javax.swing.JRootPane;
 import javax.swing.KeyStroke;
 import quick.dbtable.Column;
 import quick.dbtable.DBTable;
@@ -163,23 +165,41 @@ public class Pomocna {
 
      }*/
     public static void registrirajFokusNaPrvuKomponentu(JComponent komponenta) {
-        KeyStroke keyStroke = KeyStroke.getKeyStroke("F1");
-        Action action = new AbstractAction("focus") {
+        KeyStroke f1 = KeyStroke.getKeyStroke("F1");
+        Action akcija = new AbstractAction("focus") {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ((JComponent) e.getSource()).requestFocusInWindow();
             }
         };
-        komponenta.registerKeyboardAction(action, keyStroke, JComponent.WHEN_IN_FOCUSED_WINDOW);
+        komponenta.registerKeyboardAction(akcija, f1, JComponent.WHEN_IN_FOCUSED_WINDOW);
     }
 
-    public static void postavkeProzora(Window prozor) {
-        Set forwardKeys = prozor.getFocusTraversalKeys(
+    public static void postavkeProzora(Window prozor, JComponent komponenta) {
+        //Transfer fokusa na Enter
+        Set naprijedTipke = prozor.getFocusTraversalKeys(
                 KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS);
-        Set newForwardKeys = new HashSet(forwardKeys);
-        newForwardKeys.add(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0));
+        Set noveNaprijedTipke = new HashSet(naprijedTipke);
+        noveNaprijedTipke.add(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0));
         prozor.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS,
-                newForwardKeys);
+                noveNaprijedTipke);
+
+        // Zatvaranje prozora na Esc
+        KeyStroke escape = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
+        Action akcija = new AbstractAction("Esc Izlaz") {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ((JDialog) ((JRootPane) e.getSource()).getParent()).dispose();
+            }
+        };
+        if (prozor instanceof JDialog) {
+            ((JDialog) prozor).getRootPane().registerKeyboardAction(akcija, escape, JComponent.WHEN_IN_FOCUSED_WINDOW);
+        }
+
+        //Prijava prve komponente za fokus na F1
+        if (komponenta != null) {
+            registrirajFokusNaPrvuKomponentu(komponenta);
+        }
     }
 
     public static void kreirajMapuIzvjestaja() {

@@ -35,6 +35,7 @@ public class TipsterPregled extends javax.swing.JDialog {
         if (this.odabir && Pomocna.idPozicioniranje > 0) {
             Pomocna.pozicioniranje(1, 0, tablica);
         }
+        Pomocna.postavkeProzora(this,null);
         setVisible(true);
         setModal(modal);
 
@@ -245,7 +246,7 @@ public class TipsterPregled extends javax.swing.JDialog {
 
     private void jButtonOdabirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOdabirActionPerformed
         // TODO add your handling code here:
-        Pomocna.idPozicioniranje = Integer.parseInt(tablica.getValueAt(tablica.getSelectedRow(), 0).toString());       
+        Pomocna.idPozicioniranje = Integer.parseInt(tablica.getValueAt(tablica.getSelectedRow(), 0).toString());
         dispose();
     }//GEN-LAST:event_jButtonOdabirActionPerformed
 
