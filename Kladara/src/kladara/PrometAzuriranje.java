@@ -29,9 +29,9 @@ public class PrometAzuriranje extends javax.swing.JDialog {
      */
     private Integer id;
     private Integer opcija;
-    private String selectSQL = "SELECT ID,DATUM,TIPSTER_ID,OPIS,ULOG,KOEFICIJENT,DOBITAK,SALDO,STATUS_ID,NAPOMENA,MT,IGRAM,PAROVA,SIGURNOST FROM PROMET WHERE ID=?";
-    private String insertSQL = "INSERT INTO PROMET (ID,DATUM,TIPSTER_ID,OPIS,ULOG,KOEFICIJENT,DOBITAK,SALDO,STATUS_ID,NAPOMENA,MT,IGRAM,PAROVA,SIGURNOST) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-    private String updateSQL = "UPDATE PROMET SET DATUM=?,TIPSTER_ID=?,OPIS=?,ULOG=?,KOEFICIJENT=?,DOBITAK=?,SALDO=?,STATUS_ID=?,NAPOMENA=?, MT=?,IGRAM=?,PAROVA=?,SIGURNOST=? WHERE ID=?";
+    private String selectSQL = "SELECT ID,DATUM,TIPSTER_ID,OPIS,ULOG,KOEFICIJENT,DOBITAK,SALDO,STATUS_ID,NAPOMENA,MT,IGRAM,PAROVA,SIGURNOST,SALDO_SIGURNOST FROM PROMET WHERE ID=?";
+    private String insertSQL = "INSERT INTO PROMET (ID,DATUM,TIPSTER_ID,OPIS,ULOG,KOEFICIJENT,DOBITAK,SALDO,STATUS_ID,NAPOMENA,MT,IGRAM,PAROVA,SIGURNOST,SALDO_SIGURNOST) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    private String updateSQL = "UPDATE PROMET SET DATUM=?,TIPSTER_ID=?,OPIS=?,ULOG=?,KOEFICIJENT=?,DOBITAK=?,SALDO=?,STATUS_ID=?,NAPOMENA=?, MT=?,IGRAM=?,PAROVA=?,SIGURNOST=?,SALDO_SIGURNOST=? WHERE ID=?";
 
     public PrometAzuriranje(Component parent, boolean modal, int opcija, Integer id) {
         super();
@@ -50,7 +50,7 @@ public class PrometAzuriranje extends javax.swing.JDialog {
             jFormattedTextFieldMT.setValue(5);
         }
         this.getRootPane().setDefaultButton(jButtonOK);
-        Pomocna.postavkeProzora(this,jFormattedTextFieldDatum);
+        Pomocna.postavkeProzora(this, jFormattedTextFieldDatum);
         setVisible(true);
         setModal(modal);
 
@@ -91,6 +91,7 @@ public class PrometAzuriranje extends javax.swing.JDialog {
         jLabel11 = new javax.swing.JLabel();
         jFormattedTextFieldParova = new javax.swing.JFormattedTextField();
         jLabel12 = new javax.swing.JLabel();
+        jFormattedTextFieldSaldoSigurnost = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Promet - ažuriranje");
@@ -277,6 +278,11 @@ public class PrometAzuriranje extends javax.swing.JDialog {
         });
 
         jComboBoxSigurnost.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jComboBoxSigurnost.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxSigurnostActionPerformed(evt);
+            }
+        });
         jComboBoxSigurnost.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jComboBoxSigurnostKeyPressed(evt);
@@ -316,6 +322,11 @@ public class PrometAzuriranje extends javax.swing.JDialog {
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("Parova");
+
+        jFormattedTextFieldSaldoSigurnost.setBackground(java.awt.SystemColor.controlHighlight);
+        jFormattedTextFieldSaldoSigurnost.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
+        jFormattedTextFieldSaldoSigurnost.setFocusable(false);
+        jFormattedTextFieldSaldoSigurnost.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -359,13 +370,15 @@ public class PrometAzuriranje extends javax.swing.JDialog {
                                             .addComponent(jLabel12))
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(jCheckBoxIgram, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(jFormattedTextFieldSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jComboBoxStatusNaziv, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(jFormattedTextFieldParova, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(jCheckBoxIgram, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jFormattedTextFieldSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+                                            .addComponent(jFormattedTextFieldParova, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jComboBoxStatusNaziv, 0, 116, Short.MAX_VALUE)
+                                            .addComponent(jFormattedTextFieldSaldoSigurnost))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 4, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -438,7 +451,8 @@ public class PrometAzuriranje extends javax.swing.JDialog {
                     .addComponent(jLabel11)
                     .addComponent(jLabel12)
                     .addComponent(jFormattedTextFieldParova, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxSigurnost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxSigurnost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFormattedTextFieldSaldoSigurnost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
@@ -589,12 +603,15 @@ public class PrometAzuriranje extends javax.swing.JDialog {
     private void jFormattedTextFieldUlogPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jFormattedTextFieldUlogPropertyChange
         if (evt.getPropertyName().equals("value")) {
             racunajDobitak();
+            racunajDobitakSigurnost();
         }
     }//GEN-LAST:event_jFormattedTextFieldUlogPropertyChange
 
     private void jFormattedTextFieldKoeficijentPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jFormattedTextFieldKoeficijentPropertyChange
         if (evt.getPropertyName().equals("value")) {
             racunajDobitak();
+            racunajDobitakSigurnost();
+
         }
     }//GEN-LAST:event_jFormattedTextFieldKoeficijentPropertyChange
 
@@ -614,6 +631,7 @@ public class PrometAzuriranje extends javax.swing.JDialog {
 
     private void jComboBoxStatusNazivActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxStatusNazivActionPerformed
         racunajDobitak();
+        racunajDobitakSigurnost();
     }//GEN-LAST:event_jComboBoxStatusNazivActionPerformed
 
     private void jComboBoxSigurnostKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBoxSigurnostKeyPressed
@@ -640,13 +658,17 @@ public class PrometAzuriranje extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jTextAreaOpisFocusLost
 
+    private void jComboBoxSigurnostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSigurnostActionPerformed
+        racunajDobitakSigurnost();
+    }//GEN-LAST:event_jComboBoxSigurnostActionPerformed
+
     private void racunajDobitak() {
         try {
             BigDecimal ulog = new BigDecimal(jFormattedTextFieldUlog.getValue().toString());
-            BigDecimal koeficjent = new BigDecimal(jFormattedTextFieldKoeficijent.getValue().toString());
+            BigDecimal koeficijent = new BigDecimal(jFormattedTextFieldKoeficijent.getValue().toString());
             BigDecimal mt = new BigDecimal(jFormattedTextFieldMT.getValue().toString());
             BigDecimal dobitak = BigDecimal.ZERO;
-            dobitak = (ulog.multiply(koeficjent)).setScale(2, RoundingMode.HALF_UP);
+            dobitak = (ulog.multiply(koeficijent)).setScale(2, RoundingMode.HALF_UP);
             if (mt.compareTo(BigDecimal.ZERO) != 0) {
                 mt = mt.divide(Pomocna.sto, 2, RoundingMode.HALF_UP).add(BigDecimal.ONE);
                 dobitak = dobitak.divide(mt, 2, RoundingMode.HALF_UP);
@@ -658,6 +680,31 @@ public class PrometAzuriranje extends javax.swing.JDialog {
                 jFormattedTextFieldSaldo.setValue(dobitak.subtract(ulog));
             } else {
                 jFormattedTextFieldSaldo.setValue(ulog.negate());
+            }
+        } catch (Exception ex) {
+            //Supress           
+            //  System.err.println(ex.getMessage());            
+        }
+    }
+
+    private void racunajDobitakSigurnost() {
+        try {
+            BigDecimal sigurnost = new BigDecimal(jComboBoxSigurnost.getSelectedItem().toString());
+            BigDecimal koeficijent = new BigDecimal(jFormattedTextFieldKoeficijent.getValue().toString());
+            BigDecimal mt = new BigDecimal(jFormattedTextFieldMT.getValue().toString());
+            BigDecimal dobitakSigurnost = BigDecimal.ZERO;
+            dobitakSigurnost = (sigurnost.multiply(koeficijent)).setScale(2, RoundingMode.HALF_UP);
+            if (mt.compareTo(BigDecimal.ZERO) != 0) {
+                mt = mt.divide(Pomocna.sto, 2, RoundingMode.HALF_UP).add(BigDecimal.ONE);
+                dobitakSigurnost = dobitakSigurnost.divide(mt, 2, RoundingMode.HALF_UP);
+            }
+            jFormattedTextFieldSaldoSigurnost.setValue(dobitakSigurnost);
+            if (jComboBoxStatusNaziv.getSelectedIndex() == 0) {
+                jFormattedTextFieldSaldoSigurnost.setValue(0);
+            } else if (jComboBoxStatusNaziv.getSelectedIndex() == 1) {
+                jFormattedTextFieldSaldoSigurnost.setValue(dobitakSigurnost.subtract(sigurnost));
+            } else {
+                jFormattedTextFieldSaldoSigurnost.setValue(sigurnost.negate());
             }
         } catch (Exception ex) {
             //Supress           
@@ -685,6 +732,7 @@ public class PrometAzuriranje extends javax.swing.JDialog {
             jCheckBoxIgram.setSelected(rs.getString("IGRAM").equals("1"));
             jComboBoxSigurnost.setSelectedItem(rs.getString("SIGURNOST"));
             jFormattedTextFieldParova.setValue(rs.getInt("PAROVA"));
+            jFormattedTextFieldSaldoSigurnost.setValue(rs.getBigDecimal("SALDO_SIGURNOST"));
             rs.close();
         } catch (SQLException ex) {
             Poruka.greska(this, ex.getMessage());
@@ -707,8 +755,8 @@ public class PrometAzuriranje extends javax.swing.JDialog {
             ps.setString(11, jCheckBoxIgram.isSelected() ? "1" : "0");
             ps.setInt(12, Integer.parseInt(jFormattedTextFieldParova.getValue().toString()));
             ps.setString(13, jComboBoxSigurnost.getSelectedItem().toString());
-            ps.setInt(14, id);
-
+            ps.setBigDecimal(14, new BigDecimal(jFormattedTextFieldSaldoSigurnost.getValue().toString()));
+            ps.setInt(15, id);            
             ps.executeUpdate();
             Konekcija.konekcija.commit();
         } catch (SQLException ex) {
@@ -735,6 +783,7 @@ public class PrometAzuriranje extends javax.swing.JDialog {
             ps.setString(12, jCheckBoxIgram.isSelected() ? "1" : "0");
             ps.setInt(13, Integer.parseInt(jFormattedTextFieldParova.getValue().toString()));
             ps.setString(14, jComboBoxSigurnost.getSelectedItem().toString());
+            ps.setBigDecimal(15, new BigDecimal(jFormattedTextFieldSaldoSigurnost.getValue().toString()));
             ps.executeUpdate();
             Konekcija.konekcija.commit();
         } catch (SQLException ex) {
@@ -754,6 +803,7 @@ public class PrometAzuriranje extends javax.swing.JDialog {
     private javax.swing.JFormattedTextField jFormattedTextFieldMT;
     private javax.swing.JFormattedTextField jFormattedTextFieldParova;
     private javax.swing.JFormattedTextField jFormattedTextFieldSaldo;
+    private javax.swing.JFormattedTextField jFormattedTextFieldSaldoSigurnost;
     private javax.swing.JFormattedTextField jFormattedTextFieldTipster;
     private javax.swing.JFormattedTextField jFormattedTextFieldUlog;
     private javax.swing.JLabel jLabel1;

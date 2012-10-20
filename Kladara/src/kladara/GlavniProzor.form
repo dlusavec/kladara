@@ -34,15 +34,25 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemRekapitulacijaTipster">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Rekapitulacija po tipsteru"/>
+                <Property name="text" type="java.lang.String" value="Tipster - ulog"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemRekapitulacijaTipsterActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Tipster - sigurnost"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator1">
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemRekapitulacijaDan">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Rekapitulacija po danima"/>
+                <Property name="text" type="java.lang.String" value="Dani"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemRekapitulacijaDanActionPerformed"/>
@@ -50,7 +60,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemRekapitulacijaMjesec">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Rekapitulacija po mjesecima"/>
+                <Property name="text" type="java.lang.String" value="Mjeseci"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemRekapitulacijaMjesecActionPerformed"/>

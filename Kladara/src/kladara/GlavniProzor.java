@@ -12,7 +12,7 @@ import pomocni.Poruka;
  * @author damirl
  */
 public class GlavniProzor extends javax.swing.JFrame {
-  
+
     public GlavniProzor() {
         initComponents();
         setLocationRelativeTo(null);
@@ -33,6 +33,8 @@ public class GlavniProzor extends javax.swing.JFrame {
         jMenuItemPromet = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItemRekapitulacijaTipster = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItemRekapitulacijaDan = new javax.swing.JMenuItem();
         jMenuItemRekapitulacijaMjesec = new javax.swing.JMenuItem();
 
@@ -68,7 +70,7 @@ public class GlavniProzor extends javax.swing.JFrame {
 
         jMenu2.setText("Rekapitulacije");
 
-        jMenuItemRekapitulacijaTipster.setText("Rekapitulacija po tipsteru");
+        jMenuItemRekapitulacijaTipster.setText("Tipster - ulog");
         jMenuItemRekapitulacijaTipster.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemRekapitulacijaTipsterActionPerformed(evt);
@@ -76,7 +78,16 @@ public class GlavniProzor extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItemRekapitulacijaTipster);
 
-        jMenuItemRekapitulacijaDan.setText("Rekapitulacija po danima");
+        jMenuItem1.setText("Tipster - sigurnost");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem1);
+        jMenu2.add(jSeparator1);
+
+        jMenuItemRekapitulacijaDan.setText("Dani");
         jMenuItemRekapitulacijaDan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemRekapitulacijaDanActionPerformed(evt);
@@ -84,7 +95,7 @@ public class GlavniProzor extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItemRekapitulacijaDan);
 
-        jMenuItemRekapitulacijaMjesec.setText("Rekapitulacija po mjesecima");
+        jMenuItemRekapitulacijaMjesec.setText("Mjeseci");
         jMenuItemRekapitulacijaMjesec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemRekapitulacijaMjesecActionPerformed(evt);
@@ -134,7 +145,7 @@ public class GlavniProzor extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void jMenuItemRekapitulacijaTipsterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRekapitulacijaTipsterActionPerformed
-        new RekapitulacijaTipsterPregled(this.getRootPane(), false);
+        new RekapitulacijaTipsterUlogPregled(this.getRootPane(), false);
     }//GEN-LAST:event_jMenuItemRekapitulacijaTipsterActionPerformed
 
     private void jMenuItemRekapitulacijaDanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRekapitulacijaDanActionPerformed
@@ -142,8 +153,13 @@ public class GlavniProzor extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemRekapitulacijaDanActionPerformed
 
     private void jMenuItemRekapitulacijaMjesecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRekapitulacijaMjesecActionPerformed
-         new RekapitulacijaMjesecPregled(this.getRootPane(), false);
+        new RekapitulacijaMjesecPregled(this.getRootPane(), false);
     }//GEN-LAST:event_jMenuItemRekapitulacijaMjesecActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        new RekapitulacijaTipsterSigurnostPregled(this.getRootPane(), false);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,7 +176,7 @@ public class GlavniProzor extends javax.swing.JFrame {
                     UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
-            }         
+            }
             /* Create and display the form */
         } catch (ClassNotFoundException ex) {
             Poruka.greska(null, ex.getMessage());
@@ -178,7 +194,7 @@ public class GlavniProzor extends javax.swing.JFrame {
                 Pomocna.kreirajMapuIzvjestaja();
                 new Konekcija();
                 pomocni.PomocnaBaza.instalirajPomocneTablice();
-                new GlavniProzor().setVisible(true);               
+                new GlavniProzor().setVisible(true);
             }
         });
 
@@ -187,10 +203,12 @@ public class GlavniProzor extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItemPromet;
     private javax.swing.JMenuItem jMenuItemRekapitulacijaDan;
     private javax.swing.JMenuItem jMenuItemRekapitulacijaMjesec;
     private javax.swing.JMenuItem jMenuItemRekapitulacijaTipster;
     private javax.swing.JMenuItem jMenuItemTipster;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
