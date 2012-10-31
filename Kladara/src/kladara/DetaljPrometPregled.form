@@ -48,6 +48,8 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jFormattedTextFieldSROI" min="-2" pref="85" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
+              <Component id="jButtonIzmjena" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jButtonIzlaz" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -61,7 +63,10 @@
               <Component id="tablica" max="32767" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jButtonIzlaz" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jButtonIzlaz" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonIzmjena" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jFormattedTextFieldSUlog" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jFormattedTextFieldSDobitak" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -342,6 +347,24 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonIzlazActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButtonIzmjena">
+      <Properties>
+        <Property name="mnemonic" type="int" value="73"/>
+        <Property name="text" type="java.lang.String" value="Izmjena"/>
+        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[80, 30]"/>
+        </Property>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[80, 30]"/>
+        </Property>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[80, 30]"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonIzmjenaActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

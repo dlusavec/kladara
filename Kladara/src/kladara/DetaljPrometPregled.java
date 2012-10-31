@@ -47,7 +47,7 @@ public class DetaljPrometPregled extends javax.swing.JDialog {
             Poruka.greska(this, ex.getMessage());
         }
         this.getRootPane().setDefaultButton(jButtonIzlaz);
-        Pomocna.postavkeProzora(this,null);
+        Pomocna.postavkeProzora(this, null);
         setVisible(true);
         lokacijaPoljaTotala();
         setModal(modal);
@@ -80,6 +80,7 @@ public class DetaljPrometPregled extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jFormattedTextFieldSROI = new javax.swing.JFormattedTextField();
         jButtonIzlaz = new javax.swing.JButton();
+        jButtonIzmjena = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Promet");
@@ -220,6 +221,17 @@ public class DetaljPrometPregled extends javax.swing.JDialog {
             }
         });
 
+        jButtonIzmjena.setMnemonic('I');
+        jButtonIzmjena.setText("Izmjena");
+        jButtonIzmjena.setMaximumSize(new java.awt.Dimension(80, 30));
+        jButtonIzmjena.setMinimumSize(new java.awt.Dimension(80, 30));
+        jButtonIzmjena.setPreferredSize(new java.awt.Dimension(80, 30));
+        jButtonIzmjena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonIzmjenaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -240,6 +252,8 @@ public class DetaljPrometPregled extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jFormattedTextFieldSROI, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonIzmjena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonIzlaz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -251,7 +265,9 @@ public class DetaljPrometPregled extends javax.swing.JDialog {
                 .addComponent(tablica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonIzlaz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonIzlaz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonIzmjena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jFormattedTextFieldSUlog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jFormattedTextFieldSDobitak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -427,11 +443,26 @@ public class DetaljPrometPregled extends javax.swing.JDialog {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jButtonIzlazActionPerformed
+
+    private void jButtonIzmjenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIzmjenaActionPerformed
+        // TODO add your handling code here:
+        try {
+            Integer id = Integer.parseInt(tablica.getValueAt(tablica.getSelectedRow(), 0).toString());
+            Pomocna.idPozicioniranje = id;
+            new PrometAzuriranje(this, true, 2, id);
+            tablica.refresh();
+            totalSQL();
+            Pomocna.pozicioniranje(1, 0, tablica);
+        } catch (SQLException ex) {
+            Poruka.greska(this, ex.getMessage());
+        }
+    }//GEN-LAST:event_jButtonIzmjenaActionPerformed
     /**
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonIzlaz;
+    private javax.swing.JButton jButtonIzmjena;
     private javax.swing.JComboBox jComboBoxIgram;
     private javax.swing.JFormattedTextField jFormattedTextFieldDatumDo;
     private javax.swing.JFormattedTextField jFormattedTextFieldDatumOd;
