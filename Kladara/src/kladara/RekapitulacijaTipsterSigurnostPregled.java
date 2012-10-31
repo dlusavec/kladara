@@ -50,7 +50,6 @@ public class RekapitulacijaTipsterSigurnostPregled extends javax.swing.JDialog {
         this.getRootPane().setDefaultButton(jButtonOK);
         Pomocna.postavkeProzora(this, jFormattedTextFieldDatumOd);
         setVisible(true);
-        lokacijaPoljaTotala();
         setModal(modal);
         tablica.selectCell(0, 0, true);
     }
@@ -80,6 +79,8 @@ public class RekapitulacijaTipsterSigurnostPregled extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         jButtonOK = new javax.swing.JButton();
         jButtonIzlaz = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jComboBoxGrupa = new javax.swing.JComboBox();
         jFormattedTextFieldSSigurnost = new javax.swing.JFormattedTextField();
         jFormattedTextFieldSSaldo = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -239,6 +240,11 @@ public class RekapitulacijaTipsterSigurnostPregled extends javax.swing.JDialog {
             }
         });
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel8.setText("Grupa");
+
+        jComboBoxGrupa.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -252,17 +258,21 @@ public class RekapitulacijaTipsterSigurnostPregled extends javax.swing.JDialog {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jFormattedTextFieldDatumDo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jFormattedTextFieldTipster, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextFieldTipsterNaziv, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(jTextFieldTipsterNaziv, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jComboBoxIgram, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(127, 127, 127)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jComboBoxGrupa, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonOK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonIzlaz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -282,7 +292,10 @@ public class RekapitulacijaTipsterSigurnostPregled extends javax.swing.JDialog {
                         .addComponent(jFormattedTextFieldTipster, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jTextFieldTipsterNaziv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel7)
-                        .addComponent(jComboBoxIgram, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jComboBoxIgram, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(jComboBoxGrupa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButtonOK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButtonIzlaz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -359,16 +372,16 @@ public class RekapitulacijaTipsterSigurnostPregled extends javax.swing.JDialog {
                 .addGap(10, 10, 10)
                 .addComponent(tablica, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
                 .addGap(3, 3, 3)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jFormattedTextFieldSDobitno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jFormattedTextFieldSGubitno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jFormattedTextFieldSTiketa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jFormattedTextFieldSSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jFormattedTextFieldSSigurnost, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jFormattedTextFieldSROI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jFormattedTextFieldSDobitno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jFormattedTextFieldSGubitno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jFormattedTextFieldSTiketa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jFormattedTextFieldSROI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1))
                 .addGap(8, 8, 8)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -381,6 +394,8 @@ public class RekapitulacijaTipsterSigurnostPregled extends javax.swing.JDialog {
         jFormattedTextFieldDatumDo.setValue(new Date());
         Pomocna.igramUComboBox(jComboBoxIgram);
         jComboBoxIgram.setSelectedIndex(2);
+        jComboBoxGrupa.addItem("Tipster");
+        jComboBoxGrupa.addItem("Tipster, sigurnost");
     }
 
     private void postavkeTablica() {
@@ -435,23 +450,10 @@ public class RekapitulacijaTipsterSigurnostPregled extends javax.swing.JDialog {
 
     }
 
-    private void lokacijaPoljaTotala() {
-        Point tocka = jFormattedTextFieldSSigurnost.getLocation();
-        /*  jFormattedTextFieldSUlog.setLocation(200, tocka.y);
-    
-         jFormattedTextFieldSDobitak.setLocation(300, tocka.y);
-      
-         jFormattedTextFieldSOsvojeno.setLocation(620, tocka.y);
-       
-         jFormattedTextFieldSTiketa.setLocation(700, tocka.y);
-       
-         jFormattedTextFieldSDobitno.setLocation(800, tocka.y);
-     
-         jFormattedTextFieldSGubitno.setLocation(950, tocka.y);*/
-    }
-
     private void napraviSelectSQL() {
-     String sql = "SELECT B.ID AS Id, b.Naziv as Naziv,SUM(CAST(A.SIGURNOST AS DECIMAL(2))) as Sigurnost, SUM(A.Saldo_sigurnost) AS Saldo, ROUND(SUM(A.SALDO_SIGURNOST)/SUM(CAST(A.SIGURNOST AS DECIMAL(2)))*100,2) AS ROI,\n"
+     String sql = "SELECT B.ID AS Id,"+(jComboBoxGrupa.getSelectedItem().equals("Tipster") ? " b.Naziv as Naziv " : "B.NAZIV||'/'||A.SIGURNOST as Naziv")  +
+                ",SUM(CAST(A.SIGURNOST AS DECIMAL(2))) as Sigurnost, " +
+                " SUM(A.Saldo_sigurnost) AS Saldo, ROUND(SUM(A.SALDO_SIGURNOST)/SUM(CAST(A.SIGURNOST AS DECIMAL(2)))*100,2) AS ROI,\n"
                 + "ROUND(AVG(CAST(SIGURNOST AS DECIMAL(2))),2) as Prosj_ulog,ROUND(AVG(KOEFICIJENT),3) as Prosj_koef,\n"
                 + "COUNT(*) as Tiketa, SUM(CASE A.STATUS_ID WHEN 1 THEN 1 ELSE 0 END) AS Dobitno,SUM(CASE A.STATUS_ID WHEN 2 THEN 1 ELSE 0 END) AS Gubitno, \n"
                 + "ROUND(CAST(SUM(CASE A.STATUS_ID WHEN 1 THEN 1 ELSE 0 END) AS DECIMAL(15,3))/COUNT(*)*100,2) Dobitno_posto \n"
@@ -461,10 +463,10 @@ public class RekapitulacijaTipsterSigurnostPregled extends javax.swing.JDialog {
         //Where
         where = napraviWhereSQL();
         sql = sql + where;
-        // Group by
-        sql = sql + " GROUP BY B.ID, B.NAZIV ";
+        // Group by                
+        sql = sql + (jComboBoxGrupa.getSelectedItem().equals("Tipster") ? " GROUP BY B.ID, B.NAZIV " : " GROUP BY B.ID, B.NAZIV||'/'||A.SIGURNOST " );
         // Order by             
-        sql = sql + " ORDER BY B.ID ";
+        sql = sql + " ORDER BY "+(jComboBoxGrupa.getSelectedItem().equals("Tipster") ? " B.Naziv " : "B.NAZIV||'/'||A.SIGURNOST");
         tablica.setSelectSql(sql);
     }
 
@@ -614,6 +616,7 @@ public class RekapitulacijaTipsterSigurnostPregled extends javax.swing.JDialog {
     private javax.swing.JButton jButtonIzlaz;
     private javax.swing.JButton jButtonLista;
     private javax.swing.JButton jButtonOK;
+    private javax.swing.JComboBox jComboBoxGrupa;
     private javax.swing.JComboBox jComboBoxIgram;
     private javax.swing.JFormattedTextField jFormattedTextFieldDatumDo;
     private javax.swing.JFormattedTextField jFormattedTextFieldDatumOd;
@@ -629,6 +632,7 @@ public class RekapitulacijaTipsterSigurnostPregled extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextFieldTipsterNaziv;
