@@ -9,8 +9,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import kladara.Konekcija;
 import pojo.Tipster;
@@ -21,6 +19,18 @@ import pojo.Tipster;
  */
 public class PomocnaBaza {
 
+     public static void brisanjeTipsteraIPrometa(Integer pk) {
+        try {
+            Connection konekcija = Konekcija.konekcija;
+            Statement stmt = konekcija.createStatement();
+            stmt.execute("DELETE FROM PROMET WHERE TIPSTER_ID=" + pk.toString());
+            stmt.execute("DELETE FROM TIPSTER WHERE ID=" + pk.toString());
+            konekcija.commit();
+        } catch (SQLException ex) {
+            Poruka.greska(null, ex.getMessage());
+        }
+    }
+    
     public static void obrisiSlog(String tablica, Integer pk) {
         try {
             Connection konekcija = Konekcija.konekcija;

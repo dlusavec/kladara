@@ -35,7 +35,7 @@ public class TipsterPregled extends javax.swing.JDialog {
         if (this.odabir && Pomocna.idPozicioniranje > 0) {
             Pomocna.pozicioniranje(1, 0, tablica);
         }
-        Pomocna.postavkeProzora(this,null);
+        Pomocna.postavkeProzora(this, null);
         setVisible(true);
         setModal(modal);
 
@@ -170,8 +170,8 @@ public class TipsterPregled extends javax.swing.JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(tablica, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tablica, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -191,7 +191,7 @@ public class TipsterPregled extends javax.swing.JDialog {
             //Igram 
             Pomocna.instalirajCheckBox(tablica, 2);
             tablica.getColumn(2).setMinWidth(80);
-            tablica.getColumn(2).setMaxWidth(80);
+            tablica.getColumn(2).setMaxWidth(80);             
             TablicaSkin skin = new TablicaSkin();
             tablica.setSkin(skin);
             Object put = UIManager.put("Table.gridColor", Color.black);
@@ -232,10 +232,10 @@ public class TipsterPregled extends javax.swing.JDialog {
     private void jButtonBrisanjeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBrisanjeActionPerformed
         // TODO add your handling code here:
         Pomocna.redPozicioniranje = tablica.getSelectedRow();
-        boolean potvrda = Poruka.potvrda(rootPane, "Obrisati slog ?");
+        boolean potvrda = Poruka.potvrda(rootPane, "Obrisati tipstera i pripadajući promet ?");
         if (potvrda) {
             try {
-                PomocnaBaza.obrisiSlog("TIPSTER", Integer.parseInt(tablica.getValueAt(tablica.getSelectedRow(), 0).toString()));
+                PomocnaBaza.brisanjeTipsteraIPrometa(Integer.parseInt(tablica.getValueAt(tablica.getSelectedRow(), 0).toString()));
                 tablica.refresh();
             } catch (SQLException ex) {
                 Poruka.greska(this, ex.getMessage());
